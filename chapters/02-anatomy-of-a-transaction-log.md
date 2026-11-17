@@ -16,7 +16,7 @@ The protocol action defines the rules for reading and writing the table. It cont
 
 To see what this actually looks like, open a terminal and create a simple table using the delta-rs Python bindings. Then look at the first commit.
 
-```python
+python::
 import pyarrow as pa
 from deltalake import write_deltalake
 write_deltalake("/tmp/example_table", pa.table({"id": [1, 2, 3]}))
