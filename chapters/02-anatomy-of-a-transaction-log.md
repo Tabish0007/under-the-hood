@@ -15,12 +15,13 @@ The metaData action describes the schema of the table and its configuration. It 
 The protocol action defines the rules for reading and writing the table. It contains the minReaderVersion, the minWriterVersion, and the readerFeatures and writerFeatures arrays. A reader that does not support the features listed in the protocol will refuse to read the table. That is why a protocol mutation can break a query engine even if the data itself is fine.
 
 To see what this actually looks like, open a terminal and create a simple table using the delta-rs Python bindings. Then look at the first commit.
-python
 
+```python
 import pyarrow as pa
 from deltalake import write_deltalake
-
 write_deltalake("/tmp/example_table", pa.table({"id": [1, 2, 3]}))
+
+
 
 Now read the JSON file at /tmp/example_table/_delta_log/00000000000000000000.json. It will contain a sequence of newline-delimited JSON objects. The first object is the commit info, which records who made the change and when.
 json
