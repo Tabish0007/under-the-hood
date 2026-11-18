@@ -1,19 +1,13 @@
-Preface
-
 The Black Box Problem
 
-Every data engineer has experienced the same moment of panic. A pipeline that has run perfectly for six months suddenly fails. The error message is cryptic. The logs are unhelpful. You try the standard playbook: restart the job, clear the cache, re-run the DAG. Nothing works.
+There is a specific kind of helplessness that comes from working with systems you don't understand. It happens when you've been using a tool for months, it's been working perfectly, and then one day it fails. The error message is cryptic. The logs are unhelpful. You search online and find a dozen people with the same problem, but none of their solutions work for you.
 
-Eventually, you realize the problem is not in your code. It is underneath your code. The transaction log has been corrupted. The protocol version is mismatched. The table metadata is in a state that the query engine cannot parse.
+This happens to data engineers all the time. We are trained to use abstractions: Spark, Airflow, Delta Lake, MLflow, Kubernetes. We learn the API, we write the code, we ship it. As long as the abstraction holds, we are productive. But when it breaks, we are stuck.
 
-Most data engineers are not equipped to handle this. They have been trained to use abstractions like Spark, Airflow, and Delta Lake, but they have not been trained to debug the abstractions themselves. They know how to write a DataFrame transformation. They do not know how to read the underlying commit log.
+The reason is that we have been taught to operate at the top of the stack. We know how to write a DataFrame transformation. We don't know how to read the transaction log. We know how to write a DAG. We don't know how the scheduler actually works. We know how to deploy a model. We don't know how to detect when it's drifting.
 
-This book is the antidote to that helplessness. It is written for the engineer who is tired of treating the data stack like a black box. It is written for the engineer who wants to understand what happens under the hood when a write commits, when a protocol changes, and when a query engine decides whether to trust a table.
+This book is about going deeper. It is about understanding the systems that power the modern data stack, not just using them. It is written for the engineer who is tired of being a passenger. It is written for the engineer who wants to be the person who fixes the kernel, not the person who waits for the vendor to fix it.
 
-We will not waste time on basic tutorials. We assume you already know how to use Spark. We assume you already know how to write a DAG. We assume you have deployed a model or two. What we will focus on is the part that nobody teaches you: the internals.
+The book is structured as a series of incidents. Each chapter is a story about a time when an abstraction broke. We will look at the transaction log, the orchestrator, the protocol, the file layout, the cloud bill, and the evaluation of language models. In each case, we will go under the hood, understand the failure, and fix it.
 
-The book is divided into three parts. Part one covers the foundation: storage, transaction logs, and orchestration. Part two goes into the engine room: protocols, performance, and cost optimization. Part three covers the AI layer: model deployment, evaluation, and the future of the platform engineer.
-
-Each chapter is built around a real incident. These are not contrived examples. They are bugs that have caused production outages, wasted thousands of dollars, and broken downstream consumers. By the end of the book, you will have the tools to debug them and the confidence to prevent them.
-
-Let us start with the first incident. It begins with a table that no longer wanted to be read.
+By the end of the book, you will not just be a data engineer. You will be a platform engineer. You will be the person who can debug the black box.
